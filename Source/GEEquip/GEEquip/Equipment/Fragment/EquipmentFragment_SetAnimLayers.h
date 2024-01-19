@@ -12,7 +12,7 @@
 /**
  * EquipmentFragment class to set AnimLayers for a specific mesh
  */
-UCLASS()
+UCLASS(meta = (DisplayName = "Set Anim Layers"))
 class GEEQUIP_API UEquipmentFragment_SetAnimLayers : public UEquipmentFragment
 {
 	GENERATED_BODY()
@@ -31,7 +31,7 @@ protected:
 	TMap<FGameplayTag, TSubclassOf<UAnimInstance>> AnimLayerToApply;
 
 public:
-	virtual void HandleEquiped();
-	virtual void HandleUnequiped();
+	virtual void HandleEquiped() override;
+	virtual void HandleUnequiped() override;
 
 };

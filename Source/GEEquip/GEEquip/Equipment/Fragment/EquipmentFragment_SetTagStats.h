@@ -12,7 +12,7 @@
 /**
  * EquipmentFragment class to set the Equipment's StatTag
  */
-UCLASS()
+UCLASS(meta = (DisplayName = "Set Tag Stats"))
 class GEEQUIP_API UEquipmentFragment_SetTagStats : public UEquipmentFragment
 {
 	GENERATED_BODY()
@@ -31,6 +31,6 @@ protected:
 	TMap<FGameplayTag, int32> InitialEquipmentStats;
 
 public:
-	virtual void HandleEquipmentGiven();
+	virtual void HandleEquipmentGiven() override;
 
 };

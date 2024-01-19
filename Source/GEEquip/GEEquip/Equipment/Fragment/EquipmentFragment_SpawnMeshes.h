@@ -71,7 +71,7 @@ public:
 /**
  * EquipmentFragment class to spawn a skeletal mesh that attaches to a specific mesh
  */
-UCLASS()
+UCLASS(meta = (DisplayName = "Spawn Meshes"))
 class GEEQUIP_API UEquipmentFragment_SpawnMeshes : public UEquipmentFragment
 {
 	GENERATED_BODY()
@@ -100,7 +100,7 @@ protected:
 	TArray<TObjectPtr<USkeletalMeshComponent>> SpawnedMeshes;
 
 public:
-	virtual void HandleEquiped();
-	virtual void HandleUnequiped();
+	virtual void HandleEquiped() override;
+	virtual void HandleUnequiped() override;
 
 };
