@@ -13,6 +13,16 @@ class UEquipment;
 
 /**
  * Item information for equipment
+ * 
+ * Note:
+ *	This ItemInfo is always required for the EquipmentManager to recognize this item as equipment.
+ * 
+ * Tips:
+ *	By inheriting this class and overriding GetEquipmentClass(), 
+ *	it can be customized to return any Equipment class from other system values.
+ * 
+ *	This allows, for example, to have an Equipment class for each skin 
+ *	and return the corresponding Equipment class for the skin being applied from another system.
  */
 UCLASS(meta = (DisplayName = "Equipment Info"))
 class GEEQUIP_API UItemInfo_Equipment : public UItemInfo
@@ -28,7 +38,7 @@ public:
 	virtual EDataValidationResult IsDataValid(class FDataValidationContext& Context) const override;
 #endif
 
-public:
+protected:
 	//
 	// List of slots to which this equipment item can be added.
 	// 
@@ -43,5 +53,9 @@ public:
 	//
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Equipment", meta = (AssetBundles = "Equipment, Client, Server"))
 	TSoftClassPtr<UEquipment> EquipmentClass;
+
+public:
+	virtual const FGameplayTagContainer& GetAddableSlots() const { return AddableSlots; }
+	virtual TSubclassOf<UEquipment> GetEquipmentClass() const;
 
 };

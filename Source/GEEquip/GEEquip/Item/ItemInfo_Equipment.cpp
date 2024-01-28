@@ -2,6 +2,8 @@
 
 #include "ItemInfo_Equipment.h"
 
+#include "GEEquipLogs.h"
+
 #if WITH_EDITOR
 #include "Misc/DataValidation.h"
 #endif
@@ -30,3 +32,17 @@ EDataValidationResult UItemInfo_Equipment::IsDataValid(FDataValidationContext& C
 	return Result;
 }
 #endif
+
+
+TSubclassOf<UEquipment> UItemInfo_Equipment::GetEquipmentClass() const
+{
+	if (!EquipmentClass.IsValid())
+	{
+		UE_LOG(LogGameCore_Equipment, Warning, TEXT("You attempted to create ActiveEquipment with no Equipment class loaded."));
+		UE_LOG(LogGameCore_Equipment, Warning, TEXT("Please load the 'Equipment' bundle of the primary asset in advance for efficiency."));
+
+		return EquipmentClass.LoadSynchronous();
+	}
+
+	return EquipmentClass.Get();
+}

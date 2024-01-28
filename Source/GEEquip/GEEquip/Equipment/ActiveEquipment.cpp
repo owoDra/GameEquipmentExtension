@@ -158,7 +158,7 @@ bool FActiveEquipmentContainer::AddEquipmentItem(const FGameplayTag& InSlotTag, 
 
 	// Suspend if the slot cannot be added
 
-	const auto& AddableSlots{ EquipmentInfo->AddableSlots };
+	const auto& AddableSlots{ EquipmentInfo->GetAddableSlots() };
 
 	if (AddableSlots.IsValid() && !AddableSlots.HasTag(InSlotTag))
 	{
@@ -167,9 +167,9 @@ bool FActiveEquipmentContainer::AddEquipmentItem(const FGameplayTag& InSlotTag, 
 
 	// Suspend if Equipment class is invalid
 
-	const auto& EquipmentSoftClass{ EquipmentInfo->EquipmentClass };
+	const auto& EquipmentClass{ EquipmentInfo->GetEquipmentClass() };
 
-	if (EquipmentSoftClass.IsNull())
+	if (!EquipmentClass)
 	{
 		UE_LOG(LogGameCore_Equipment, Error, TEXT("EquipmentClass has not set in [%s]"), *GetNameSafe(InItemData));
 		return false;
@@ -189,20 +189,6 @@ bool FActiveEquipmentContainer::AddEquipmentItem(const FGameplayTag& InSlotTag, 
 	OutHandle = NewEntry.Handle;
 
 	// Create Instance
-
-	TSubclassOf<UEquipment> EquipmentClass{ nullptr };
-
-	if (!EquipmentSoftClass.IsValid())
-	{
-		UE_LOG(LogGameCore_Equipment, Warning, TEXT("You attempted to create ActiveEquipment with no Equipment class loaded."));
-		UE_LOG(LogGameCore_Equipment, Warning, TEXT("Please load the 'Equipment' bundle of the primary asset in advance for efficiency."));
-
-		EquipmentClass = EquipmentSoftClass.LoadSynchronous();
-	}
-	else
-	{
-		EquipmentClass = EquipmentSoftClass.Get();
-	}
 
 	NewEntry.Instance = NewObject<UEquipment>(Owner, EquipmentClass);
 
