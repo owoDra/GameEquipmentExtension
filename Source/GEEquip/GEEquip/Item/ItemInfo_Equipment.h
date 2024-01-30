@@ -51,7 +51,7 @@ protected:
 	//
 	// Definition class of equipment to be added
 	//
-	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Equipment", meta = (AssetBundles = "Equipment, Client, Server"))
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Equipment", meta = (AssetBundles = "Client, Server"))
 	TSoftClassPtr<UEquipment> EquipmentClass;
 
 public:
