@@ -34,7 +34,7 @@ public:
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Equipment Items
 public:
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Equipments", meta = (ForceInlineRow, Categories = "Equipment.Slot", AssetBundles = "Item, Equipment, Client, Server"))
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Equipments", meta = (ForceInlineRow, Categories = "Equipment.Slot", AssetBundles = "Client, Server"))
 	TMap<FGameplayTag, TSoftObjectPtr<const UItemData>> Entries;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Equipments", meta = (Categories = "Equipment.Slot"))
