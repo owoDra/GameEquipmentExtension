@@ -10,6 +10,7 @@
 #include "Equipment.generated.h"
 
 class UEquipmentFragment;
+class UItemData;
 
 
 /**
@@ -71,6 +72,18 @@ public:
 protected:
 	UPROPERTY(EditDefaultsOnly, Instanced, Category = "Fragments")
 	TArray<TObjectPtr<UEquipmentFragment>> Fragments;
+
+
+	/////////////////////////////////////////////////////////////////////////////////////
+	// ItemData
+protected:
+	TObjectPtr<const UItemData> AssociateItemData{ nullptr };
+
+public:
+	virtual void SetAssociateItemData(const UItemData* InItemData) { AssociateItemData = InItemData; }
+
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Item")
+	virtual const UItemData* GetAssociateItemData() const { return AssociateItemData; }
 
 
 	/////////////////////////////////////////////////////////////////////////////////////
