@@ -3,6 +3,8 @@
 #include "Equipment.h"
 
 #include "Fragment/EquipmentFragment.h"
+#include "EquipmentFunctionLibrary.h"
+#include "EquipmentManagerComponent.h"
 #include "GEEquipLogs.h"
 
 #include "Net/UnrealNetwork.h"
@@ -80,6 +82,8 @@ void UEquipment::RegisterReplicationFragments(UE::Net::FFragmentRegistrationCont
 }
 #endif // UE_WITH_IRIS
 
+
+// Event
 
 void UEquipment::HandleEquipmentGiven()
 {

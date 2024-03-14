@@ -194,7 +194,6 @@ public:
 	bool GetActiveSlotInfo(FEquipmentSlotChangedMessage& SlotInfo) const;
 	bool GetSlotInfo(const FGameplayTag& SlotTag, FEquipmentSlotChangedMessage& SlotInfo) const;
 
-
 protected:
 	void BroadcastSlotChangeMessage(
 		FGameplayTag SlotTag = FGameplayTag::EmptyTag

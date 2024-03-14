@@ -75,18 +75,6 @@ protected:
 
 
 	/////////////////////////////////////////////////////////////////////////////////////
-	// ItemData
-protected:
-	TObjectPtr<const UItemData> AssociateItemData{ nullptr };
-
-public:
-	virtual void SetAssociateItemData(const UItemData* InItemData) { AssociateItemData = InItemData; }
-
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Item")
-	virtual const UItemData* GetAssociateItemData() const { return AssociateItemData; }
-
-
-	/////////////////////////////////////////////////////////////////////////////////////
 	// Event
 public:
 	/**

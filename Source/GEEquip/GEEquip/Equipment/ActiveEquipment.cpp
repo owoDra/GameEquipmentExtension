@@ -558,7 +558,6 @@ void FActiveEquipmentContainer::HandleEquipmentGiven(FActiveEquipment& ActiveEqu
 	auto Instance{ ActiveEquipment.Instance };
 	check(Instance);
 
-	Instance->SetAssociateItemData(ActiveEquipment.ItemData);
 	Instance->HandleEquipmentGiven();
 
 	BroadcastSlotChangeMessage(ActiveEquipment.Slot, ActiveEquipment.ItemData, ActiveEquipment.Instance);
